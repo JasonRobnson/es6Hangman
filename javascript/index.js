@@ -6,7 +6,7 @@ const hangmanObj = {
     letterBank: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' ],
     usedLetterBank: ['a', 'b'], 
     counter: 0,
-    guessLeft: 0, 
+    guessLeft: 5, 
     gameWon: 0,
     documentWriter(idTag, objKeyPropPair) {
         document.getElementById(idTag).innerText = objKeyPropPair
@@ -17,7 +17,7 @@ const hangmanObj = {
     startGame(x) {
         this.keyListener();
         this.documentWriter('usedLetters', this.usedLetterBank);
-        this.documentWriter('gameScore', this.counter)
+        this.documentWriter('gameScore', this.counter);
         this.numberGenerator();
         this.answerSetup(hangmanWord);
         this.createUnderscores(hangmanWord);
@@ -25,7 +25,7 @@ const hangmanObj = {
     },
     keyListener() {
         document.addEventListener('keypress', (event) => {
-            let keyCode = event.charCode
+            let keyCode = event.charCode;
             let character = String.fromCharCode(keyCode);
             return character; 
         })
@@ -36,17 +36,20 @@ const hangmanObj = {
     },
     createUnderscores(chosenWord) {
         let underscores = chosenWord.toString().split("").map(x => '_')
-        this.blankBank.push(underscores)
+        this.blankBank.push(underscores);
         document.getElementById("blanksForAnswer").innerText = this.blankBank.map( blanks => blanks.join(' '))
     },
     numberGenerator() {
-       let randomNumber = Math.floor(Math.random() * hangmanObj.wordbank.length)
+       let randomNumber = Math.floor(Math.random() * hangmanObj.wordbank.length);
        return randomNumber;
     },
     availableLetterHandler(letterBank) {
-        document.getElementById("lettersAvailable").innerText = this.letterBank.toLocaleString().toUpperCase()
+        document.getElementById("lettersAvailable").innerText = this.letterBank.toLocaleString().toUpperCase();
+    },
+    winChecker() {
+        console.log("This Function Checks GuessesLeft");
     }
-}
+};
 
 let wordbankIndex = hangmanObj.numberGenerator();
 let hangmanWord = hangmanObj.wordbank[wordbankIndex];

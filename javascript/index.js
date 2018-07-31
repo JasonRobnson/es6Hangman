@@ -1,9 +1,10 @@
 
 const hangmanObj = {
     wordbank: ['foxx', 'pryor', 'rock', 'hope', 'hart', 'vandyke', 'seinfeld', 'mac'],
+    answerBank: [],
     blankBank: [],
     letterBank: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' ],
-    usedWordBank: [], 
+    usedLetterBank: [], 
     counter: 0,
     guessLeft: 0, 
     gameWon: 0,
@@ -17,6 +18,29 @@ const hangmanObj = {
         return console.log('This starts the game, and starts it again when invoke!' );
     },
     keyListener(x) {
-        return console.log('This should listen to any key events on the screen when invoked, not sure if this will work as a method, but will try');
+        document.addEventListener('keypress', (event) => {
+            let keyCode = event.charCode
+            let character = String.fromCharCode(keyCode);
+            console.log(character)
+            return character 
+        })
+    },
+    answerSetup(chosenWord){
+        let answer = chosenWord; 
+        return this.answerBank.push(answer)
+    },
+    createUnderscores(answerBank) {
+        console.log(answerBank);
+        let underscores = answerBank.toString().split("").map(x => '_')
+        return this.blankBank.push(underscores)
+        console.log(hangmanObj.blankBank)
     }
+
 }
+
+let numberGenerator = Math.floor(Math.random() * hangmanObj.wordbank.length);
+let solutionWord = hangmanObj.wordbank[numberGenerator];
+
+hangmanObj.keyListener();
+hangmanObj.answerSetup(solutionWord);
+hangmanObj.createUnderscores(hangmanObj.answerBank);

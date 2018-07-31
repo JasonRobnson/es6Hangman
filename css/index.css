@@ -14,7 +14,7 @@ body {
 }
 h1 {
     font-family: 'Hanalei Fill', cursive;
-    font-size: 40pxvw;
+    font-size: 2.7rem;
     color: #97CAEF;
     text-shadow: 2px 5px #FC4445;
     opacity: 1;
@@ -22,9 +22,14 @@ h1 {
 
 h3 {
     font-family: 'Open Sans', sans-serif;
-    font-size: 40em;
+    font-size: 1.2em;
     color: #55BCC9;
     text-shadow: 1px 1px #FC4445
+}
 
-
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2em;
+    color: #55BCC9;
+    text-shadow: 1px 1px #FC4445
 }

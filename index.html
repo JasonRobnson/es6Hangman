@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Hanalei+Fill|Open+Sans" rel="stylesheet">
       <!-- Compiled and minified CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css"> -->
 </head>
 <body>
         <div class="header">
@@ -25,17 +25,23 @@
         <div class="container">
             <div class="row">
                 <div class="col md4 s12">
+                        <h3>GameScore:</h3>
+                    <div id="gameScore">
+    
+                    </div>
+                </div>
+                <div class="col md4 s12">
                        <h3>Letters Guessed:</h3>
                     <div id="usedLetters">
 
                     </div>
                 </div>
                 <div class="col md4 s12">
-                        <h3>GameScore:</h3>
-                    <div id="gameScore">
-
+                        <h3>Guesses Left:</h3>
+                    <div id="guessesLeft">
+    
                     </div>
-                </div>
+                </div>            
                 <div class="col md4 s12">
                         <h3>Letters Available:</h3>
                     <div id="lettersAvailable">
@@ -45,7 +51,7 @@
             </div>
             <div class="row">
                 <div class="col md12 s12">
-                        <h3>Answer:</h3>
+                        <h2>Answer:</h2>
                     <div id="blanksForAnswer">  
 
                     </div>

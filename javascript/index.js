@@ -21,7 +21,6 @@ const hangmanObj = {
         document.addEventListener('keypress', (event) => {
             let keyCode = event.charCode
             let character = String.fromCharCode(keyCode);
-            console.log(character)
             return character 
         })
     },
@@ -30,16 +29,18 @@ const hangmanObj = {
         return this.answerBank.push(answer)
     },
     createUnderscores(answerBank) {
-        console.log(answerBank);
         let underscores = answerBank.toString().split("").map(x => '_')
         return this.blankBank.push(underscores)
-        console.log(hangmanObj.blankBank)
+    },
+    numberGenerator() {
+       let randomNumber = Math.floor(Math.random() * hangmanObj.wordbank.length)
+       return randomNumber
     }
 
 }
 
-let numberGenerator = Math.floor(Math.random() * hangmanObj.wordbank.length);
-let solutionWord = hangmanObj.wordbank[numberGenerator];
+let wordbankIndex = hangmanObj.numberGenerator();
+let solutionWord = hangmanObj.wordbank[wordbankIndex];
 
 hangmanObj.keyListener();
 hangmanObj.answerSetup(solutionWord);

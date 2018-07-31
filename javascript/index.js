@@ -15,33 +15,35 @@ const hangmanObj = {
         return console.log('This reveals the blanks of the hidden answers!');
     },
     startGame(x) {
-        return console.log('This starts the game, and starts it again when invoke!' );
+        this.numberGenerator();
+        this.answerSetup(hangmanWord);
+        this.createUnderscores(hangmanWord);
     },
-    keyListener(x) {
+    keyListener() {
         document.addEventListener('keypress', (event) => {
             let keyCode = event.charCode
             let character = String.fromCharCode(keyCode);
-            return character 
+            return character; 
         })
     },
     answerSetup(chosenWord){
         let answer = chosenWord; 
-        return this.answerBank.push(answer)
+        return this.answerBank.push(answer);
     },
-    createUnderscores(answerBank) {
-        let underscores = answerBank.toString().split("").map(x => '_')
-        return this.blankBank.push(underscores)
+    createUnderscores(chosenWord) {
+        let underscores = chosenWord.toString().split("").map(x => '_')
+        this.blankBank.push(underscores)
+        document.getElementById("blanksForAnswer").innerText = this.blankBank.map( blanks => blanks.join(' '))
     },
     numberGenerator() {
        let randomNumber = Math.floor(Math.random() * hangmanObj.wordbank.length)
-       return randomNumber
+       return randomNumber;
     }
-
 }
 
 let wordbankIndex = hangmanObj.numberGenerator();
-let solutionWord = hangmanObj.wordbank[wordbankIndex];
+let hangmanWord = hangmanObj.wordbank[wordbankIndex];
 
 hangmanObj.keyListener();
-hangmanObj.answerSetup(solutionWord);
-hangmanObj.createUnderscores(hangmanObj.answerBank);
+hangmanObj.startGame();
+

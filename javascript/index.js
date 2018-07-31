@@ -15,6 +15,7 @@ const hangmanObj = {
         return console.log('This reveals the blanks of the hidden answers!');
     },
     startGame(x) {
+        this.keyListener();
         this.documentWriter('usedLetters', this.usedLetterBank);
         this.documentWriter('gameScore', this.counter)
         this.numberGenerator();
@@ -50,6 +51,5 @@ const hangmanObj = {
 let wordbankIndex = hangmanObj.numberGenerator();
 let hangmanWord = hangmanObj.wordbank[wordbankIndex];
 
-hangmanObj.keyListener();
 hangmanObj.startGame();
 

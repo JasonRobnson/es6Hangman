@@ -29,14 +29,13 @@ const hangmanObj = {
         document.addEventListener('keypress', (event) => {
          const keyCode = event.charCode;
          const character = String.fromCharCode(keyCode).toLowerCase();
-         const result = this.answerBank.toString().split("").filter( word => word == character )
-         this.displayAnswerBank.push(result)
-         console.log(result)
-         let replacer = `/${character}/g`
-         console.log(replacer)
-         this.answerBank.toString().replace(replacer, '')
-        return console.log(this.answerBank)
-         console.log(this.displayAnswerBank);
+         console.log(character)
+         this.usedLetterChecker(character)
+         const userButtonPress = this.answerBank.toString().split("").filter( word => word == character );
+         console.log(userButtonPress)
+         this.displayAnswerBank.push(userButtonPress);
+         
+
             })
         },
     answerSetup(chosenWord){
@@ -61,7 +60,13 @@ const hangmanObj = {
     },
     winChecker() {
         console.log("This Function Checks GuessesLeft");
+    },
+    usedLetterChecker(userCharacter) {
+        if(hangmanObj.usedLetterBank === userCharacter) {
+            console.log("Heck Yeah!")
+        }
     }
+
 };
 
 let wordbankIndex = hangmanObj.numberGenerator();

@@ -17,12 +17,11 @@ const hangmanObj = {
     startGame(x) {
         //StartGame is working!
         this.documentWriter('gameScore', this.counter);
+        this.documentWriter('guessesLeft', this.guessLeft)
         this.numberGenerator();
         this.answerSetup(hangmanWord);
         this.keyListener(this.answerBank);
-        this.createUnderscores(hangmanWord);
-        this.availableLetterHandler(hangmanObj.letterBank);
-        
+        this.createUnderscores(hangmanWord);     
     },
     keyListener(answerBank) {
         //KeyListener Working!
@@ -49,43 +48,44 @@ const hangmanObj = {
        let randomNumber = Math.floor(Math.random() * hangmanObj.wordbank.length);
        return randomNumber;
     },
-    availableLetterHandler(letterBank) {
-        //Available number generator is working!
-        this.documentWriter('lettersAvailable', this.letterBank.toLocaleString().toUpperCase());
-    },
     usedLetterHandler(usedLetter) {
         //usedLetter Handler working!
        this.documentWriter('usedLetters', this.usedLetterBank.map( usedLet => usedLet.toUpperCase())) 
     },
-    answerUpdater(displayAnswerBank, answerBank) {
-
-    },
     winChecker() {
-        console.log("This Function Checks GuessesLeft");
+        //WinChecker Works!
+        if (this.guessLeft === 0 ) {
+            console.log("GameOver Suckah!");
+        } else if ( 0 === this.answerBank) {
+           console.log("The else if clause!");
+        }
+        
     },
     usedLetterChecker(userCharacter) {
         //used letter checker is working!
         if( this.usedLetterBank.includes(userCharacter)) {
+            --this.guessLeft
+            this.documentWriter('guessesLeft', this.guessLeft)
             console.log("Sorry, That letter has been used already!");
+           this.winChecker();
         } else {
             this.usedLetterBank.push(userCharacter);
             this.usedLetterHandler(userCharacter);
             this.answerChecker(userCharacter);
         }
     },
-    answerChecker(character){
-           this.answerBank.toString().split("").find((element) => { 
-                if (element == character) {
-                    this.blankBank.push(character);
-                    this.usedLetterBank.push(character);
-                    console.log("This is the blankBank Array " + this.blankBank);
-                } else {
-                    this.usedLetterBank.push(character);
-                    console.log("This is the used LetterBank Array " + this.usedLetterBank)
-                };
-            })
+    answerChecker(userCharacter){
+        //AnswerChecker Work!
+        let answerCheckerWord = hangmanWord.split("")
+        if (answerCheckerWord.includes(userCharacter)) {
+            console.log("It's in it!")
+        } else {
+            --this.guessLeft
+            this.documentWriter('guessesLeft', this.guessLeft)
+            console.log("It's not in it!")
+            this.winChecker();
+        }
     }
-
 };
 
 let wordbankIndex = hangmanObj.numberGenerator();

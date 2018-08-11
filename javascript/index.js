@@ -55,7 +55,7 @@ const hangmanObj = {
     winChecker() {
         //WinChecker Works!
         if (this.guessLeft === 0 ) {
-            console.log("GameOver Suckah!");
+            alert("GameOver Suckah!");
         } else if ( 0 === this.answerBank) {
            console.log("The else if clause!");
         }
@@ -63,7 +63,7 @@ const hangmanObj = {
     },
     usedLetterChecker(userCharacter) {
         //used letter checker is working!
-        if( this.usedLetterBank.includes(userCharacter)) {
+        if(this.usedLetterBank.includes(userCharacter)) {
             --this.guessLeft
             this.documentWriter('guessesLeft', this.guessLeft)
             console.log("Sorry, That letter has been used already!");
@@ -72,6 +72,7 @@ const hangmanObj = {
             this.usedLetterBank.push(userCharacter);
             this.usedLetterHandler(userCharacter);
             this.answerChecker(userCharacter);
+            this.underscoreReplacer(userCharacter)
         }
     },
     answerChecker(userCharacter){
@@ -85,6 +86,13 @@ const hangmanObj = {
             console.log("It's not in it!");
             this.winChecker();
         }
+    },
+    underscoreReplacer(character){
+      let index = this.answerBank.toString().split("").indexOf(character);
+       this.blankBank.splice(index, 1, character)
+       this.documentWriter('blanksForAnswer', this.blankBank)
+        console.log(this.blankBank)
+        console.log(index)
     }
 };
 
@@ -93,3 +101,4 @@ let hangmanWord = hangmanObj.wordbank[wordbankIndex];
 
 hangmanObj.startGame();
 
+  // Questions for help, ES6 to handle two characters in a word, and also replacing blank with characters at specific index

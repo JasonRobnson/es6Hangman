@@ -78,11 +78,11 @@ const hangmanObj = {
         //AnswerChecker Work!
         let answerCheckerWord = hangmanWord.split("")
         if (answerCheckerWord.includes(userCharacter)) {
-            console.log("It's in it!")
+            console.log("It's in it!");
         } else {
             --this.guessLeft
-            this.documentWriter('guessesLeft', this.guessLeft)
-            console.log("It's not in it!")
+            this.documentWriter('guessesLeft', this.guessLeft);
+            console.log("It's not in it!");
             this.winChecker();
         }
     }

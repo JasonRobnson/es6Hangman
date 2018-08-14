@@ -89,10 +89,13 @@ const hangmanObj = {
     },
     underscoreReplacer(character){
       let index = this.answerBank.toString().split("").indexOf(character);
-       this.blankBank.splice(index, 1, character)
-       this.documentWriter('blanksForAnswer', this.blankBank)
-        console.log(this.blankBank)
-        console.log(index)
+    //    this.blankBank.splice(index, 1, character)
+       let underscoreArrReplace = this.blankBank.map( userChar => this.blankBank.push(character))
+       console.log(this.blankBank)
+       console.log(underscoreArrReplace)
+    //    this.documentWriter('blanksForAnswer', this.blankBank)
+    //     console.log(this.blankBank)
+    //     console.log(index)
     }
 };
 

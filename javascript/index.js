@@ -98,7 +98,7 @@ const hangmanObj = {
     //     console.log(index)
     }
 };
-
+/// need to ask Josh B about this.
 let wordbankIndex = hangmanObj.numberGenerator();
 let hangmanWord = hangmanObj.wordbank[wordbankIndex];
 

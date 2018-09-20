@@ -26,9 +26,9 @@ const hangmanObj = {
     keyListener(answerBank) {
         //KeyListener Working!
         document.addEventListener('keypress', (event) => {
-            const keyCode = event.charCode;
-            const character = String.fromCharCode(keyCode).toLowerCase();
-            this.usedLetterChecker(character);
+            const keyCode = event.key.toLowerCase();
+            this.usedLetterChecker(keyCode);
+
         })
     },
     answerSetup(chosenWord){
@@ -72,7 +72,7 @@ const hangmanObj = {
             this.usedLetterBank.push(userCharacter);
             this.usedLetterHandler(userCharacter);
             this.answerChecker(userCharacter);
-            this.underscoreReplacer(userCharacter)
+            // this.underscoreReplacer(userCharacter)
         }
     },
     answerChecker(userCharacter){
@@ -86,17 +86,17 @@ const hangmanObj = {
             console.log("It's not in it!");
             this.winChecker();
         }
-    },
-    underscoreReplacer(character){
-      let index = this.answerBank.toString().split("").indexOf(character);
-    //    this.blankBank.splice(index, 1, character)
-       let underscoreArrReplace = this.blankBank.map( userChar => this.blankBank.push(character))
-       console.log(this.blankBank)
-       console.log(underscoreArrReplace)
-    //    this.documentWriter('blanksForAnswer', this.blankBank)
-    //     console.log(this.blankBank)
-    //     console.log(index)
     }
+    // underscoreReplacer(character){
+    //   let index = this.answerBank.toString().split("").indexOf(character);
+    // //    this.blankBank.splice(index, 1, character)
+    //    let underscoreArrReplace = this.blankBank.map( userChar => this.blankBank.push(character))
+    //    console.log(this.blankBank)
+    //    console.log(underscoreArrReplace)
+    // //    this.documentWriter('blanksForAnswer', this.blankBank)
+    // //     console.log(this.blankBank)
+    // //     console.log(index)
+    // }
 };
 /// need to ask Josh B about this.
 let wordbankIndex = hangmanObj.numberGenerator();
@@ -105,3 +105,10 @@ let hangmanWord = hangmanObj.wordbank[wordbankIndex];
 hangmanObj.startGame();
 
   // Questions for help, ES6 to handle two characters in a word, and also replacing blank with characters at specific index
+
+
+
+  //$$$$$$ Check out String Methods .ChartAT() & .replace() to handle pushing user selection into answer array
+//   if (myFarm[j].charAt(0) === "c" || myFarm[j].charAt(0) === "o") {
+//     alert("Starts with a c or an o!");
+//   }
